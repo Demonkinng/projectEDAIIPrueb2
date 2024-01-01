@@ -1,6 +1,5 @@
 from tkinter import messagebox, simpledialog
 from Vertex import Vertex
-from Edge import Edge
 from Graph import Graph
 
 # Simuliting a switch case for choose the type of graph

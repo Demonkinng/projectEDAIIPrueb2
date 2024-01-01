@@ -42,7 +42,9 @@ class Graph:
     def bfs(self, start, finish):
         search_queue = deque()
         search_queue += self._vertices[start]
-        searched = []
+        searched = {clave: False for clave in self._vertices}
+        parents = {clave: None for clave in self._vertices}
+        # searched = []
 
         while search_queue:
             current_edge = search_queue.popleft()
