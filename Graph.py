@@ -44,10 +44,40 @@ class Graph:
         search_queue += self._vertices[start]
         searched = {clave: False for clave in self._vertices}
         parents = {clave: None for clave in self._vertices}
-        # searched = []
 
         while search_queue:
             current_edge = search_queue.popleft()
+            if not searched[current_edge.destination]:
+                if current_edge.destination == finish:
+                    return True
+                else:
+                    search_queue += self._vertices[current_edge.destination]
+                    print('entro al condicional del searched')
+                    parents[current_edge.destination] = current_edge.origin
+                    print(parents)
+
+    def dfs(self, vertex, searched, parents, component_r):
+        component_r.append(vertex)
+        searched[vertex] = True
+        for neighbor in self._vertices[vertex]:
+            if not searched[neighbor.destination]:
+                parents[neighbor.destination] = vertex
+                self.dfs(neighbor.destination, searched, parents, component_r)
+
+    def construct_dfs_tree(self, vertex, parents, level=0):
+        if vertex is None:
+            return
+
+        print(" " * level, vertex)
+
+        for key, value in parents.items():
+            if value == vertex:
+                self.construct_dfs_tree(key, parents, level+1)
+
+    @property
+    def vertices(self):
+        # Return the dict representation of graph
+        return self._vertices
 
     def __repr__(self):
         return '\n'.join([f"'{key}': {value}" for key, value in self._vertices.items()])
