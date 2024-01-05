@@ -1,3 +1,10 @@
+"""
+    Clase: Edge
+    Autor: Angel David Chuncho Jimenez
+    Fecha: 05/01/2024
+"""
+
+
 class Edge:
     def __init__(self, u, v):
         # Constructor for Edge Class
@@ -16,4 +23,4 @@ class Edge:
 
     def __repr__(self):
         # Method for representing the objects in a class as a string
-        return f"({self._origin},{self._destination})"
+        return str(self._destination)

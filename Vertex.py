@@ -1,3 +1,10 @@
+"""
+    Clase: Vertex
+    Autor: Angel David Chuncho Jimenez
+    Fecha: 05/01/2024
+"""
+
+
 class Vertex:
 
     def __init__(self, info):
