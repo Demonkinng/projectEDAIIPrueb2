@@ -78,10 +78,10 @@ class Graph:
         component_r.append(vertex)
         searched[vertex] = True
 
-        for neighbor in self._vertices[vertex]:
-            if not searched[neighbor.destination]:
-                parents[neighbor.destination] = vertex
-                self.dfs(neighbor.destination, searched, parents, component_r)  # Recursive call
+        for edge in self._vertices[vertex]:
+            if not searched[edge.destination]:
+                parents[edge.destination] = vertex
+                self.dfs(edge.destination, searched, parents, component_r)  # Recursive call
 
     def construct_tree(self, vertex, parents, level=0):
         # Method to build the tree with the parents structure
